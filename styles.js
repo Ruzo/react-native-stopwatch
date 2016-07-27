@@ -54,7 +54,7 @@ export default styles = StyleSheet.create({
     color: '#444444'
   },
   listTimeText: {
-    width: 75,
+    width: 100,
     alignItems: 'center',
     fontSize: 20,
     color: '#eeeeee'
