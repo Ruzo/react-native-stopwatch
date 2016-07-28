@@ -13,7 +13,8 @@ class Timer extends Component {
 
     this.state = {
       counter: 0,
-      counting: false
+      counting: false,
+      initialTime: 0
     }
 
     this.interval = 0;
@@ -23,10 +24,10 @@ class Timer extends Component {
     if(!this.state.counting){
       this.setState({counting: true});
       this.props.resetLapList();
-      const initialTime = new Date();
+      this.setState({initialTime: new Date()});
       this.interval = setInterval(() => {
       const currentTime = new Date();
-      this.setState({counter: currentTime - initialTime});
+      this.setState({counter: currentTime - this.state.initialTime});
     }, 30);
     } else {
       clearInterval(this.interval);
@@ -36,12 +37,13 @@ class Timer extends Component {
 
   handleLapButton(){
     this.props.updateLapList(this.state.counter);
+    this.setState({initialTime: new Date()});
   }
 
   render() {
     return (
       <View style={styles.timerContainer}>
-        <TimerRender counter={moment(this.state.counter).format('mm:ss:SS')} />
+        <TimerRender counter={moment(this.state.counter).format('mm:ss.SS')} />
         <ButtonsRender
           handleStartButton={this.handleStartButton.bind(this)}
           handleLapButton={this.handleLapButton.bind(this)}

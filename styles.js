@@ -44,7 +44,7 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     borderBottomWidth: 1,
-    borderColor: '#888888',
+    borderColor: '#666666',
     padding: 5
   },
   listLapText: {
